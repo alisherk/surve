@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 //settin up a custom env port or local port
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 //setting up initial route handler
 app.get('/', (req, res) => {
