@@ -4,7 +4,7 @@ module.exports = {
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     mongoURI: process.env.MONGO_URI, 
     mongoDbUser:process.env.MONGO_DB_USER,
-    mongoDbPassword: process.env.MONGO-DB-PASSWORD,
+    mongoDbPassword: process.env.MONGO_DB_PASSWORD,
     mongoDbName: process.env.MONGO_DB_NAME, 
     cookieKey: process.env.COOKIE_KEY
   };
