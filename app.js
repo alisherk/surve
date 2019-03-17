@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const keys = require('./config/dev');
+const keys = require('./config/prod');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session'); 
 const passport = require('passport');
