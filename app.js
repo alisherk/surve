@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const keys = require('./config/prod');
+const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session'); 
 const passport = require('passport');
@@ -17,7 +17,7 @@ app.use(
   cookieSession({
     //this is in milliseconds we want it for 24 hours hence the calclation
      maxAge: 24 * 60 * 60 * 1000, 
-     //this for incription of the key
+     //this will encrypt the info
      keys: [keys.cookieKey]
   })
 );
