@@ -4,18 +4,17 @@ const keys = require('../config/keys');
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
-//this gets id from db and add it to the cookie  
+//this gets id from db and add it to the cookie
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
 //this takes id from cookie and turns this back into user modal
 passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then(user => {
-       done(null, user)
-    });
-}); 
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
 
 //telling passport to use this specific google strategy
 //new GoogleStrategy function creates a new instance of google passport strategy
@@ -28,20 +27,18 @@ passport.use(
        */
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback', 
-      proxy: true 
+      callbackURL: '/auth/google/callback',
+      proxy: true
     },
     //arrow function is addded as cb
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleID: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          new User({ googleID: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleID: profile.id });
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        const user = await new User({ googleID: profile.id }).save();
+        done(null, user);
+      }
     }
   )
 );
