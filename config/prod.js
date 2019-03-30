@@ -6,5 +6,7 @@ module.exports = {
     mongoDbUser:process.env.MONGO_DB_USER,
     mongoDbPassword: process.env.MONGO_DB_PASSWORD,
     mongoDbName: process.env.MONGO_DB_NAME, 
-    cookieKey: process.env.COOKIE_KEY
+    cookieKey: process.env.COOKIE_KEY,
+    stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY, 
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY
   };

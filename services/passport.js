@@ -32,11 +32,14 @@ passport.use(
     },
     //arrow function is addded as cb
     async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleID: profile.id });
+      const existingUser = await User.findOne({googleID: profile.id});
       if (existingUser) {
         done(null, existingUser);
       } else {
-        const user = await new User({ googleID: profile.id }).save();
+        const user = await new User({
+          googleID: profile.id,
+          username: profile.displayName
+        }).save();
         done(null, user);
       }
     }

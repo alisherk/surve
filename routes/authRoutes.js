@@ -1,6 +1,5 @@
 const passport = require('passport');
 
-
 //@ module.exports = function(app) assumes that we are going to pass app.js as a param to this function
 module.exports = app => {
   /*route handler
@@ -18,14 +17,20 @@ module.exports = app => {
     passport is provided as a second param with google string to connect to strategy above
     also once route is executed, it activates a cb call in GoogleStartegy 
 */
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+  );
 
   app.get('/api/logout', (req, res) => {
-      req.logout();
-      res.send('<h1> You are logged out</h1>'); 
-  }); 
+    req.logout();
+    res.redirect('/');
+  });
 
   app.get('/api/current_user', (req, res) => {
-       res.send(req.user)
+    res.send(req.user);
   });
 };
