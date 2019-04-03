@@ -15,7 +15,7 @@ module.exports = app => {
       const user = await req.user.save();
       res.send(user);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   });
 };
