@@ -29,7 +29,7 @@ app.use(passport.session());
 app.use(express.json());
 
 //connection set up to mongoDB
-const db = require('./config/dev').mongoURI;
+const db = require('./config/keys').mongoURI;
 mongoose.connect(db, { useNewUrlParser: true });
 
 /*bring authRoutes module from routes dir and passing app to the function exported which initializes 
