@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Payments from '../Payments'; 
 
 class Header extends Component {
   render() {
     const output = this.props.auth ? (
       <ul className='navbar-nav ml-auto'>
-       <li className='nav-item'>
-          <Payments />
-        </li>
         <li className='nav-item'>
-           <span className='nav-link text-white'> Credits: {this.props.auth.credits} </span>
-        </li>
-        <li className='nav-item'>
-          <NavLink to='/surveys' className='nav-link text-white'>
-            Dashboard
+          <NavLink to='/account' className='nav-link text-white'>
+           My account
           </NavLink>
         </li>
         <li className='nav-item'>
@@ -28,8 +21,18 @@ class Header extends Component {
       <ul className='navbar-nav ml-auto'>
         <li className='nav-item'>
           <a href='/auth/google' className='nav-link text-white'>
-            Login
+            Google  
           </a>
+        </li> 
+        <li className='nav-item'>
+          <NavLink to='/register' className='nav-link text-white'>
+           Register 
+          </NavLink>
+        </li>
+        <li className='nav-item'>
+          <NavLink to='/login' className='nav-link text-white'>
+           Login
+          </NavLink>
         </li>
       </ul>
     );

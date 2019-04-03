@@ -21,7 +21,7 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/surveys');
+      res.redirect('/');
     }
   );
 
@@ -32,5 +32,43 @@ module.exports = app => {
 
   app.get('/api/current_user', (req, res) => {
     res.send(req.user);
+  });
+
+  app.post('/api/registerUser', (req, res, next) => {
+    passport.authenticate('register', (err, user, info) => {
+      if (err) {
+        res.status(500).send('Internal server error');
+      }
+      if (info !== undefined) {
+        res.status(403).send('This username is taken');
+      } else {
+        req.logIn(user, err => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send('user is created');
+          }
+        });
+      }
+    })(req, res, next);
+  });
+
+  app.post('/api/loginUser', (req, res, next) => {
+    passport.authenticate('login', (err, user, info) => {
+      if (err) {
+        res.status(500).send('Internal server error');
+      }
+      if (info !== undefined) {
+          res.status(403).send(info.message); 
+      } else {
+        req.logIn(user, err => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send('authenticated');
+          }
+        });
+      }
+    })(req, res, next);
   });
 };
