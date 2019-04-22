@@ -6,5 +6,7 @@ module.exports = {
     cookieKey: process.env.COOKIE_KEY,
     stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY, 
     stripeSecretKey: process.env.STRIPE_SECRET_KEY, 
-    redirectURI: 'https://murmuring-sea-95529.herokuapp.com'
+    redirectURI: process.env.REDIRECT_URI, 
+    sendGridKey: process.env.SEND_GRID_KEY,
+    redirectDomain: process.env.REDIRECT_DOMAIN,
   };

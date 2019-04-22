@@ -7,6 +7,7 @@ const passport = require('passport');
 
 //bring mongoDB model and passport service
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 //initialize app to express function given to us by require above
@@ -37,8 +38,11 @@ the routes defined in authRoutes.js
 */
 require('./routes/authRoutes')(app);
 
-//bring billing routes
+//billing routes
 require('./routes/billingRoutes')(app);
+
+//survey routes 
+require('./routes/surveyRoutes')(app);
 
 //settin up a custom env port or local dev port
 const port = process.env.PORT || 5000;

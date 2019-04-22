@@ -7,7 +7,7 @@ class Header extends Component {
     const output = this.props.auth ? (
       <ul className='navbar-nav ml-auto'>
         <li className='nav-item'>
-          <NavLink to='/account' className='nav-link text-white'>
+          <NavLink to='/dashboard' className='nav-link text-white'>
            My account
           </NavLink>
         </li>

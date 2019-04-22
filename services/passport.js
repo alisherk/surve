@@ -32,7 +32,6 @@ try {
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         callbackURL: keys.redirectURI + '/auth/google/callback',
-        
       },
       //arrow function is addded as cb
       async (accessToken, refreshToken, profile, done) => {
