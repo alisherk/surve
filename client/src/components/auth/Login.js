@@ -26,7 +26,7 @@ class Login extends Component {
         if(res.data && res.status === 200)
         this.setState({message: res.data});
         if (this.state.message === 'authenticated'){
-           window.location.href='/';
+           window.location.href='/dashboard';
         }  
     }).catch(err => {
        if (err.response.data) {

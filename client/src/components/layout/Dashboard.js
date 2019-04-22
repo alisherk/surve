@@ -8,16 +8,9 @@ import SurveyList from '../layout/SurveyList';
 class Dashboard extends Component {
 
   render() {
-     
-    if(!this.props.auth) return <Redirect to='/' /> 
-  
-    if (
-      this.props.auth.googleUsername === 'undefined' ||
-      this.props.auth.credits === 'undefined' ||
-      this.props.auth.localUsername === 'undefined'
-    ) {
-      return <div className='container'> Loading ... </div>;
-    } else {
+
+     if(!this.props.isAuthenticated) return < Redirect to='/'/>
+   
       return (
         <div className='container' style={{ margin: '10px 10px' }}>
           <div className='row'>
@@ -53,12 +46,11 @@ class Dashboard extends Component {
       );
     }
   }
-}
-
+  
 function mapStateToProps({ auth }) {
   return { auth };
 }
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps, 
 )(Dashboard);

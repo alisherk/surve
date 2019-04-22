@@ -7,8 +7,14 @@ class Header extends Component {
     const output = this.props.auth ? (
       <ul className='navbar-nav ml-auto'>
         <li className='nav-item'>
+          <span className='nav-link text-white'>
+            {this.props.auth.googleUsername}
+            {this.props.auth.localUsername}
+          </span>
+        </li>
+        <li className='nav-item'>
           <NavLink to='/dashboard' className='nav-link text-white'>
-           My account
+            My account
           </NavLink>
         </li>
         <li className='nav-item'>
@@ -21,17 +27,17 @@ class Header extends Component {
       <ul className='navbar-nav ml-auto'>
         <li className='nav-item'>
           <a href='/auth/google' className='nav-link text-white'>
-            Google  
+            Google
           </a>
-        </li> 
+        </li>
         <li className='nav-item'>
           <NavLink to='/register' className='nav-link text-white'>
-           Register 
+            Register
           </NavLink>
         </li>
         <li className='nav-item'>
           <NavLink to='/login' className='nav-link text-white'>
-           Login
+            Login
           </NavLink>
         </li>
       </ul>
@@ -40,7 +46,10 @@ class Header extends Component {
     return (
       <div>
         <nav className='navbar navbar-dark navbar-expand-lg navbar-light bg-dark'>
-          <NavLink to='/' className='navbar-brand text-white'> Surve Inc</NavLink>
+          <NavLink to='/' className='navbar-brand text-white'>
+            {' '}
+            Surve Inc
+          </NavLink>
           <button
             className='navbar-toggler'
             type='button'
@@ -52,8 +61,8 @@ class Header extends Component {
           >
             <span className='navbar-toggler-icon navbar-light' />
           </button>
-          <div className='collapse navbar-collapse' id='navbarNavAltMarkup'> 
-            {output}        
+          <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
+            {output}
           </div>
         </nav>
       </div>

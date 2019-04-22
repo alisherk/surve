@@ -10,11 +10,17 @@ import Dashboard from './components/layout/Dashboard';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login'; 
 import SurveyNew from './components/layout/SurveyNew';
+import NotFound from './components/layout/NotFound';
+
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.fetchUser(); 
+ state = {
+   isAuthenticated: false
+ }
+ 
+ componentDidMount() {
+    this.props.fetchUser();  
   }
 
   render() {
@@ -25,10 +31,11 @@ class App extends Component {
             <Header />
             <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/dashboard' component={Dashboard} />
-            <Route path='/surveys/new' component={SurveyNew} />
+            <Route path='/dashboard' render={() => <Dashboard isAuthenticated={this.props.auth} />} />
+            <Route path='/surveys/new' render={() => < SurveyNew isAuthenticated={this.props.auth} />}/>
             <Route path= '/register' component={Register} />
             <Route path= '/login' component={Login} />
+            <Route path='*' component={NotFound} />
             </Switch>
           </div>
         </BrowserRouter>
@@ -37,7 +44,12 @@ class App extends Component {
   }
 }
 
+const mapStateToprops = ({ auth }) => {
+    return { auth }
+}
+
+
 export default connect(
-null,
+mapStateToprops,
 { fetchUser }
 )(App);

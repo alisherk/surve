@@ -8,6 +8,13 @@
   min-height: 420px;
 }
 
+.not-found {
+  background: url('./assets//images/404.png'); 
+  background-size:cover;
+  background-position: center;
+  min-height: 590px;
+}
+
 @media screen and (max-width:500px) and (max-width: 600px) and (max-width: 700px) {
   .main {
     background-repeat: no-repeat;
